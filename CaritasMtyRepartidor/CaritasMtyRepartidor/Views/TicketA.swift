@@ -19,7 +19,7 @@ struct TicketA: View {
                     List(listaTickets){ ticketItem in
                         NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
                             TicketRow(ticket: ticketItem)
-                        }.buttonStyle(PlainButtonStyle())
+                        }.frame(width: 380)
 
                         
                                             }
