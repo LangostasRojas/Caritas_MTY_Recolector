@@ -11,7 +11,7 @@ import SwiftUI
 struct CaritasMtyRepartidorApp: App {
     var body: some Scene {
         WindowGroup {
-            Login()
+            ContentView()
         }
     }
 }

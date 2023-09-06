@@ -14,6 +14,12 @@
 		FBF4C54C2AA8D44900B3757D /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C54B2AA8D44900B3757D /* Data.swift */; };
 		FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C54D2AA8D45D00B3757D /* User.swift */; };
 		FBF4C5502AA8D46F00B3757D /* BotonUni.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */; };
+		FBF7E6DB2AA8D9BA001E4D7D /* VistaTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7E6DA2AA8D9BA001E4D7D /* VistaTicket.swift */; };
+		FBF7E6DE2AA8DA5C001E4D7D /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7E6DD2AA8DA5C001E4D7D /* Ticket.swift */; };
+		FBF7E6E02AA8DBF0001E4D7D /* TicketRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7E6DF2AA8DBF0001E4D7D /* TicketRow.swift */; };
+		FBF7E6E52AA8DC9C001E4D7D /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7E6E42AA8DC9C001E4D7D /* ModelData.swift */; };
+		FBF7E6E72AA8DDAE001E4D7D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7E6E62AA8DDAE001E4D7D /* ContentView.swift */; };
+		FBF7E6EB2AA8E29A001E4D7D /* TicketA.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF7E6EA2AA8E29A001E4D7D /* TicketA.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +31,12 @@
 		FBF4C54B2AA8D44900B3757D /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		FBF4C54D2AA8D45D00B3757D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotonUni.swift; sourceTree = "<group>"; };
+		FBF7E6DA2AA8D9BA001E4D7D /* VistaTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VistaTicket.swift; sourceTree = "<group>"; };
+		FBF7E6DD2AA8DA5C001E4D7D /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		FBF7E6DF2AA8DBF0001E4D7D /* TicketRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketRow.swift; sourceTree = "<group>"; };
+		FBF7E6E42AA8DC9C001E4D7D /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		FBF7E6E62AA8DDAE001E4D7D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		FBF7E6EA2AA8E29A001E4D7D /* TicketA.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketA.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +70,11 @@
 			isa = PBXGroup;
 			children = (
 				FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */,
-				FBF4C5492AA8D41D00B3757D /* Login.swift */,
+				FBF7E6E12AA8DC46001E4D7D /* Views */,
 				FBF4C54B2AA8D44900B3757D /* Data.swift */,
 				FBF4C54D2AA8D45D00B3757D /* User.swift */,
 				FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */,
+				FBF7E6DC2AA8DA29001E4D7D /* ListaTickets */,
 				FBF4C53F2AA8D40100B3757D /* Assets.xcassets */,
 				FBF4C5412AA8D40100B3757D /* Preview Content */,
 			);
@@ -74,6 +87,27 @@
 				FBF4C5422AA8D40100B3757D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		FBF7E6DC2AA8DA29001E4D7D /* ListaTickets */ = {
+			isa = PBXGroup;
+			children = (
+				FBF7E6DD2AA8DA5C001E4D7D /* Ticket.swift */,
+				FBF7E6E42AA8DC9C001E4D7D /* ModelData.swift */,
+			);
+			path = ListaTickets;
+			sourceTree = "<group>";
+		};
+		FBF7E6E12AA8DC46001E4D7D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FBF7E6E62AA8DDAE001E4D7D /* ContentView.swift */,
+				FBF7E6DA2AA8D9BA001E4D7D /* VistaTicket.swift */,
+				FBF7E6DF2AA8DBF0001E4D7D /* TicketRow.swift */,
+				FBF4C5492AA8D41D00B3757D /* Login.swift */,
+				FBF7E6EA2AA8E29A001E4D7D /* TicketA.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,8 +182,14 @@
 			files = (
 				FBF4C54A2AA8D41D00B3757D /* Login.swift in Sources */,
 				FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */,
+				FBF7E6E52AA8DC9C001E4D7D /* ModelData.swift in Sources */,
+				FBF7E6EB2AA8E29A001E4D7D /* TicketA.swift in Sources */,
 				FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */,
+				FBF7E6DB2AA8D9BA001E4D7D /* VistaTicket.swift in Sources */,
 				FBF4C54C2AA8D44900B3757D /* Data.swift in Sources */,
+				FBF7E6E72AA8DDAE001E4D7D /* ContentView.swift in Sources */,
+				FBF7E6DE2AA8DA5C001E4D7D /* Ticket.swift in Sources */,
+				FBF7E6E02AA8DBF0001E4D7D /* TicketRow.swift in Sources */,
 				FBF4C5502AA8D46F00B3757D /* BotonUni.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
