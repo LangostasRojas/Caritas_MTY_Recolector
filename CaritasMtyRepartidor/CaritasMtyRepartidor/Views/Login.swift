@@ -62,7 +62,15 @@ struct Login: View {
                         
                         NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true)){
                             Text("inicia sesion")
-                                .padding(80.0).foregroundColor(.white)
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.white)
+                                
+                                .frame(width: 280.0, height: 60.0)
+                                .background(Color("ColorAzulVerdePaleta"))
+                                .cornerRadius(30)
+                                .shadow(color:.black,radius: 2,y:2)
+                                .padding(80.0)
                             
                         }
                         

@@ -17,9 +17,9 @@ struct TicketRow: View {
                 .fontWeight(.bold)
             Text("\(ticket.nombre)")
                 .font(.title)
-            Text("\(ticket.cantidad)")
+            Text("$ \(String(format: "%.2f", ticket.cantidad))")
                 .font(.title)
-            Spacer()
+            
         }
     }
 }
