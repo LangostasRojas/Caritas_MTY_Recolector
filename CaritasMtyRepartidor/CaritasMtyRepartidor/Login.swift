@@ -10,6 +10,17 @@ import SwiftUI
 struct Login: View {
     @State var username: String = ""
     @State var password: String = ""
+    func dologin() -> Void {
+        login(usernamelog: "\(username)", passwordlog: "\(password)") {
+            (user, error) in
+            if let user = user {
+                print("Logged in user: \(user.userName)")
+            } else if let error = error {
+                print("Error logging in: \(error.localizedDescription)")
+            }
+        }
+    }
+    
     var body: some View {
         VStack{
             ZStack{
@@ -59,7 +70,7 @@ struct Login: View {
                         .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                         .autocorrectionDisabled(true)
                     
-                    Button(action: {
+                    BotonUni(textoboton: "Iniciar Sesion", colorboton: "ColorAzulVerdePaleta", widthboton: 280.0, heightboton: 60.0) {
                         login(usernamelog: "\(username)", passwordlog: "\(password)") {
                             (user, error) in
                             if let user = user {
@@ -68,18 +79,9 @@ struct Login: View {
                                 print("Error logging in: \(error.localizedDescription)")
                             }
                         }
-                    }, label: {
-                        Text("Iniciar Sesión")
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.white)
+                    }.padding(80)
                         
-                            .frame(width: 280.0, height: 60.0)
-                            .background(Color("ColorAzulVerdePaleta"))
-                            .cornerRadius(30)
-                            .shadow(color:.black,radius: 2,y:2)
-                    })
-                    .padding(80)
+                    
                 }
             }
         }
