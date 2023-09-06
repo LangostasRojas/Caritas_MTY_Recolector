@@ -24,11 +24,16 @@ struct VistaTicket: View {
             Color("BgColor")
                 .ignoresSafeArea()
             VStack{
-                Text("Ticket - \(ticket.id)")
-                    .foregroundColor(.white)
-                    .font(.system(size: 40))
-                    .fontWeight(.bold)
-                    .padding(.trailing, 100.0)
+                HStack{
+                    Text("Ticket - \(ticket.id)")
+                        .foregroundColor(.white)
+                        .font(.system(size: 40))
+                        .fontWeight(.bold)
+                        .padding(.leading, 40.0)
+                    Spacer()
+                }
+               
+                    
                 Rectangle()
                     .fill(Color("ColorAzulVerdePaleta"))
                     .frame(width: 170,height: 7)
@@ -42,7 +47,7 @@ struct VistaTicket: View {
                     VStack{
                         Group{
                             Text("Nombre: ")
-                                .padding(10)
+                                .padding(.bottom,5)
                                 .fontWeight(.bold)
                             Text(ticket.nombre)
                                 .padding(.bottom,5.0)
