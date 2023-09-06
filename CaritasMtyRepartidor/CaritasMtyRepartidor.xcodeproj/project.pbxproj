@@ -15,6 +15,7 @@
 		FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C54D2AA8D45D00B3757D /* User.swift */; };
 		FBF4C5502AA8D46F00B3757D /* BotonUni.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */; };
 		FBFD244E2AA8DF6300C81625 /* DetailedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFD244D2AA8DF6300C81625 /* DetailedView.swift */; };
+		FBFD24502AA8E50100C81625 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBFD244F2AA8E50100C81625 /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		FBF4C54D2AA8D45D00B3757D /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BotonUni.swift; sourceTree = "<group>"; };
 		FBFD244D2AA8DF6300C81625 /* DetailedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedView.swift; sourceTree = "<group>"; };
+		FBFD244F2AA8E50100C81625 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */,
+				FBFD244F2AA8E50100C81625 /* ContentView.swift */,
 				FBF4C5492AA8D41D00B3757D /* Login.swift */,
 				FBF4C54B2AA8D44900B3757D /* Data.swift */,
 				FBF4C54D2AA8D45D00B3757D /* User.swift */,
@@ -151,6 +154,7 @@
 			files = (
 				FBF4C54A2AA8D41D00B3757D /* Login.swift in Sources */,
 				FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */,
+				FBFD24502AA8E50100C81625 /* ContentView.swift in Sources */,
 				FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */,
 				FBF4C54C2AA8D44900B3757D /* Data.swift in Sources */,
 				FBFD244E2AA8DF6300C81625 /* DetailedView.swift in Sources */,
