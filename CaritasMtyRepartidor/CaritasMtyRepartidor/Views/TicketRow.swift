@@ -10,18 +10,29 @@ import SwiftUI
 struct TicketRow: View {
     var ticket : Ticket
     var body: some View {
-        HStack{
-            Text("\(ticket.id)")
-                .font(.largeTitle)
-                .foregroundColor(.blue)
-                .fontWeight(.bold)
-            Text("\(ticket.nombre)")
-                .font(.title)
-            Text("$ \(String(format: "%.2f", ticket.cantidad))")
-                .font(.title)
+        ZStack{
+            Color("BgColor").ignoresSafeArea()
+            HStack{
+                
+                Image("Mapa").resizable(resizingMode: .stretch)
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 100)
+                
+                VStack(alignment: .leading){
+                    Text("\(ticket.nombre)")
+                        .font(.title)
+                        .foregroundColor(.white)
+                    Text("$ \(String(format: "%.2f", ticket.cantidad))")
+                        .font(.title)
+                        .foregroundColor(.white)
+                }
+                Spacer()
+                
+            }.padding()
             
         }
     }
+    
 }
 
 struct JugadorRow_Previews: PreviewProvider {

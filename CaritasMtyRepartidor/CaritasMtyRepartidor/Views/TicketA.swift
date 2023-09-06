@@ -9,16 +9,24 @@ import SwiftUI
 
 struct TicketA: View {
     var body: some View {
-        NavigationStack{
-            List(listaTickets){ ticketItem in
-                NavigationLink{
-                    VistaTicket(ticket: ticketItem)
+        
+            
+            ZStack{
+                
+                NavigationStack{
+                    
+                    
+                    List(listaTickets){ ticketItem in
+                        NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
+                            TicketRow(ticket: ticketItem)
+                        }.buttonStyle(PlainButtonStyle())
+
+                        
+                                            }
+                    
                 }
-                label:{
-                    TicketRow(ticket: ticketItem)
-                }
-            }.listStyle(.inset)
-        }
+            }.background(Color("BgColor"))
+       
     }
 }
 

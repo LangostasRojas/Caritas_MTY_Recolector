@@ -61,7 +61,7 @@ struct Login: View {
                             .autocorrectionDisabled(true)
                         
                         NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true)){
-                            Text("inicia sesion")
+                            Text("Inicia Sesión")
                                 .font(.title)
                                 .bold()
                                 .foregroundColor(.white)
