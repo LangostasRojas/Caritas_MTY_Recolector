@@ -10,7 +10,11 @@ import Foundation
 
 func callAPILista(userID : Int) -> Array<Ticket> {
     var lista: Array<Ticket> = []
+<<<<<<< Updated upstream
     guard let url = URL(string:"http://10.14.255.66:10204/get-recolector-tickets?recolectorId=\(userID)") else{
+=======
+    guard let url = URL(string:"http://10.22.223.123:10201/get-recolector-tickets?recolectorId=\(userID)") else{
+>>>>>>> Stashed changes
         return lista
     }
     

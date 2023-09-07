@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct TicketA: View {
+    @State public var listaTicket: Array<Ticket> = callAPILista(userID: 2)
     var body: some View {
         
-            
             ZStack{
                 
                 NavigationStack{
+<<<<<<< Updated upstream
                     List(listaTickets){ ticketItem in
+=======
+                    List(listaTicket){ ticketItem in
+>>>>>>> Stashed changes
                         NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
                             TicketRow(ticket: ticketItem)
                         }.frame(width: 380)
