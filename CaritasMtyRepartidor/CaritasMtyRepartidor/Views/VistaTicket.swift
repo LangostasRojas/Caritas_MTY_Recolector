@@ -20,7 +20,7 @@ struct VistaTicket: View {
     var body: some View {
         
         ZStack{
-            
+        
             Color("BgColor")
                 .ignoresSafeArea()
             VStack{
