@@ -19,10 +19,10 @@ import Foundation
 //    print(error.localizedDescription)
 //}
 
-func login(usernamelog: String, passwordlog: String, completion: @escaping (User?, Error?) -> Void){
+func login(usernamelog: String, passwordlog: String, completion: @escaping (User?, Error?) -> Void) {
     
     
-    guard let url = URL(string:"http://10.22.211.207:10201/sign-in") else{
+    guard let url = URL(string:"http://10.22.223.123:10201/sign-in") else{
         completion(nil, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
@@ -54,22 +54,22 @@ func login(usernamelog: String, passwordlog: String, completion: @escaping (User
         if let data = data {
             let responseString = String(data: data, encoding: .utf8) ?? "Invalid data"
             
-            
             do {
                 let decoder =  JSONDecoder()
                 let user = try decoder.decode(User.self, from: data)
                 DispatchQueue.main.async {
-
                     completion(user, nil)
                 }
+                
             } catch {
                 DispatchQueue.main.async {
                     print("Error: \(responseString)")
                     completion(nil, error)
-
                 }
-            }
                 
+            }
+            
+            
             
             
         }

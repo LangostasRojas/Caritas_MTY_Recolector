@@ -10,6 +10,7 @@ import SwiftUI
 struct Login: View {
     @State var username: String = ""
     @State var password: String = ""
+    @State var shouldNav: Bool = false
     var body: some View {
         NavigationStack{
             VStack{
@@ -60,19 +61,33 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                             .autocorrectionDisabled(true)
                         
-                        NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true)){
-                            Text("Inicia Sesión")
-                                .font(.title)
-                                .bold()
-                                .foregroundColor(.white)
+                        BotonUni(textoboton: "Iniciar Sesion",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
+                            login(usernamelog: "\(username)", passwordlog: "\(password)") {
+                             (user, error) in
+                             if let user = user {
+                                 shouldNav = true
+                             } else if let error = error {
+                                 shouldNav = false
+                             }
+                             }
+                        }.background(
+                            NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true), isActive: $shouldNav){
                                 
-                                .frame(width: 280.0, height: 60.0)
-                                .background(Color("ColorAzulVerdePaleta"))
-                                .cornerRadius(30)
-                                .shadow(color:.black,radius: 2,y:2)
-                                .padding(80.0)
-                            
-                        }
+                            }).padding(80)
+                        
+//                        NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true)){
+//                            Text("Inicia Sesión")
+//                                .font(.title)
+//                                .bold()
+//                                .foregroundColor(.white)
+//
+//                                .frame(width: 280.0, height: 60.0)
+//                                .background(Color("ColorAzulVerdePaleta"))
+//                                .cornerRadius(30)
+//                                .shadow(color:.black,radius: 2,y:2)
+//                                .padding(80.0)
+//
+//                        }
                         
                         /*
                          Button(action: {

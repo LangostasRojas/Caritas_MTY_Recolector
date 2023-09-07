@@ -10,11 +10,16 @@ import Foundation
 struct User: Codable{
     
     let userId: Int
-    let userName: String
-    let name: String
     let role: String
-    let lastName: String
+    let exp: String
     let refreshToken: String
     let accessToken: String
-
+    
+    init(userId: Int, role: String, exp: String, refreshToken: String, accessToken: String) {
+        self.userId = userId
+        self.role = role
+        self.exp = exp
+        self.refreshToken = refreshToken
+        self.accessToken = accessToken
+    }
 }

@@ -29,6 +29,7 @@ struct TicketRow: View {
                 Spacer()
                 
             }.padding()
+                .background(Color("BgColor"))
             
         }
     }
