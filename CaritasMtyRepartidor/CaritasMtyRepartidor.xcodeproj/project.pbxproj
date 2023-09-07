@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FBD24EAF2AAA2741009A7D83 /* GetTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD24EAE2AAA2741009A7D83 /* GetTicket.swift */; };
 		FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */; };
 		FBF4C5402AA8D40100B3757D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF4C53F2AA8D40100B3757D /* Assets.xcassets */; };
 		FBF4C5432AA8D40100B3757D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF4C5422AA8D40100B3757D /* Preview Assets.xcassets */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FBD24EAE2AAA2741009A7D83 /* GetTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicket.swift; sourceTree = "<group>"; };
 		FBF4C5382AA8D40000B3757D /* CaritasMtyRepartidor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaritasMtyRepartidor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaritasMtyRepartidorApp.swift; sourceTree = "<group>"; };
 		FBF4C53F2AA8D40100B3757D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +52,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FBD24EAD2AAA2712009A7D83 /* Reqs */ = {
+			isa = PBXGroup;
+			children = (
+				FBD24EAE2AAA2741009A7D83 /* GetTicket.swift */,
+			);
+			path = Reqs;
+			sourceTree = "<group>";
+		};
 		FBF4C52F2AA8D40000B3757D = {
 			isa = PBXGroup;
 			children = (
@@ -69,6 +79,7 @@
 		FBF4C53A2AA8D40000B3757D /* CaritasMtyRepartidor */ = {
 			isa = PBXGroup;
 			children = (
+				FBD24EAD2AAA2712009A7D83 /* Reqs */,
 				FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */,
 				FBF7E6E12AA8DC46001E4D7D /* Views */,
 				FBF4C54B2AA8D44900B3757D /* Data.swift */,
@@ -190,6 +201,7 @@
 				FBF7E6E72AA8DDAE001E4D7D /* ContentView.swift in Sources */,
 				FBF7E6DE2AA8DA5C001E4D7D /* Ticket.swift in Sources */,
 				FBF7E6E02AA8DBF0001E4D7D /* TicketRow.swift in Sources */,
+				FBD24EAF2AAA2741009A7D83 /* GetTicket.swift in Sources */,
 				FBF4C5502AA8D46F00B3757D /* BotonUni.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

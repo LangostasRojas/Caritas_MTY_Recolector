@@ -14,8 +14,6 @@ struct TicketA: View {
             ZStack{
                 
                 NavigationStack{
-                    
-                    
                     List(listaTickets){ ticketItem in
                         NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
                             TicketRow(ticket: ticketItem)
