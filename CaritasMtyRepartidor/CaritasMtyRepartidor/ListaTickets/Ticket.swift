@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Ticket: Identifiable, Hashable{
+
+struct Ticket: Codable, Identifiable{
+
     var id: Int
     var nombre : String
     var cantidad : Float
