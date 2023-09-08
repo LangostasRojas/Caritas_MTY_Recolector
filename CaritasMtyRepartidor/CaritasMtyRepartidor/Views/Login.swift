@@ -32,7 +32,7 @@ struct Login: View {
                         
                         Spacer().frame(height: 350)
                         
-                        TextField("", text: $username, prompt: Text("Ingresa tu email").foregroundColor(.white))
+                        TextField("", text: $username, prompt: Text("Ingresa tu usuario").foregroundColor(.white))
                             .padding()
                             .frame(width: 350, height: 55)
                             .background(.clear)
@@ -65,7 +65,7 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                             .autocorrectionDisabled(true)
                         
-                        BotonUni(textoboton: "Iniciar Sesion",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
+                        BotonUni(textoboton: "Iniciar Sesión",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
                             login(usernamelog: "\(username)", passwordlog: "\(password)") {
                              (user, error) in
                              if let user = user {

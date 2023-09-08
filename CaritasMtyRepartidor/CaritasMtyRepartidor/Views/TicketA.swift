@@ -34,8 +34,11 @@ struct TicketA: View {
                                 
                                 
                                 if let unwrappedListaTicketsR = listaTicketsR {
+                                    
+                                    
                                     ForEach(unwrappedListaTicketsR) { ticketItem in
                                         NavigationLink(destination: VistaTicket(ticket: ticketItem)) {
+                                            
                                             TicketRow(ticket: ticketItem)
                                         }
                                         .buttonStyle(.plain)

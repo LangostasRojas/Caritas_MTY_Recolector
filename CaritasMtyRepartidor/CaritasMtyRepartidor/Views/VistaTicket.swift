@@ -74,8 +74,13 @@ struct VistaTicket: View {
                         completeTicket(ticketID: ticket.id, token: repartidor.accessToken) { success in
                             
                             if(success){
-                                
                                 print("EXITOOO!")
+                                
+                                if let listat = listaTicketsR{
+                                    
+                                    listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                    
+                                }
                                 
                             }else{
                                 
@@ -110,8 +115,21 @@ struct VistaTicket: View {
     }
 }
 
+func removeItem(arreglo: Array<Ticket>, ticket: Ticket) -> Int{
+    var i: Int = 0
+    while true{
+        if arreglo[i].id == ticket.id{
+            return i
+        }else{
+            i+=1
+        }
+    }
+}
+
+
 struct VistaTicket_Previews: PreviewProvider {
     static var previews: some View {
+        
         VistaTicket(ticket: listaTickets[0])
     }
 }
