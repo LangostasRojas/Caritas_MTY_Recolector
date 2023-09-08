@@ -10,6 +10,7 @@ import SwiftUI
 struct Login: View {
     @State var username: String = ""
     @State var password: String = ""
+    @State var lista: Array<Ticket> = []
     @State var shouldNav: Bool = false
     var body: some View {
         NavigationStack{
@@ -65,13 +66,18 @@ struct Login: View {
                             login(usernamelog: "\(username)", passwordlog: "\(password)") {
                              (user, error) in
                              if let user = user {
+                                 print(user)
+                                 
+                                  lista = callTickets(userID: user.userId, token: user.accessToken)
                                  shouldNav = true
                              } else if let error = error {
+                                 print(error)
                                  shouldNav = false
                              }
                              }
                         }.background(
-                            NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true), isActive: $shouldNav){
+                            NavigationLink(destination:
+                                            TicketA(tickets: lista).navigationBarBackButtonHidden(true), isActive: $shouldNav){
                                 
                             }).padding(80)
                         

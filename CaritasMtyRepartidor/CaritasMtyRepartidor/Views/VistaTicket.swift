@@ -58,7 +58,7 @@ struct VistaTicket: View {
                             Text("Cantidad")
                                 .padding(.vertical,5)
                                 .fontWeight(.bold)
-                            Text("$ \(String(format: "%.2f", ticket.cantidad))")
+                            Text("$ \(String(format: "%.2f", ticket.importe))")
                                 .padding(.bottom,10)
                         }
                         .font(.system(size: 20))

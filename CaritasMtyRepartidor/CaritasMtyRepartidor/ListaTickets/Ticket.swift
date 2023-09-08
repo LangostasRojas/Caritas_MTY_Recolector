@@ -8,19 +8,23 @@
 import Foundation
 
 
-struct Ticket: Codable, Identifiable{
-
+struct Ticket: Codable, Identifiable {
     var id: Int
-    var nombre : String
-    var cantidad : Float
-    var estado : Bool
+    var nombre: String
+    var importe: Float
     var direccion: String
-    
-    init(id: Int,nombre: String, cantidad: Float, estado: Bool, direccion: String) {
-        self.id = id
+
+    enum CodingKeys: String, CodingKey {
+        case id = "idDonativo"
+        case nombre = "nombre"
+        case importe = "importe"
+        case direccion = "direccion"
+    }
+
+    init(id: Int, nombre: String, importe: Float, direccion: String) {
+        self.id = 1
         self.nombre = nombre
-        self.cantidad = cantidad
-        self.estado = estado
+        self.importe = importe
         self.direccion = direccion
     }
 }
