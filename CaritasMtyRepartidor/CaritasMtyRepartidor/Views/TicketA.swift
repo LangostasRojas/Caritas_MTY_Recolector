@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct TicketA: View {
-    @State  var tickets: Array<Ticket>
     var body: some View {
         NavigationStack{
                 ZStack{
@@ -32,16 +31,25 @@ struct TicketA: View {
                             .offset(x:-70,y:-25)
                         ScrollView{
                             LazyVStack(spacing: 10){
-                                ForEach(tickets){ ticketItem in
-                                    NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
-                                        TicketRow(ticket: ticketItem)
-                                    }.buttonStyle(.plain)
+                                
+                                
+                                if let unwrappedListaTicketsR = listaTicketsR {
+                                    ForEach(unwrappedListaTicketsR) { ticketItem in
+                                        NavigationLink(destination: VistaTicket(ticket: ticketItem)) {
+                                            TicketRow(ticket: ticketItem)
+                                        }
+                                        .buttonStyle(.plain)
                                         .padding(0)
-                                    Divider()
-                                        .frame(width: 300.0, height: 1.4)
-                                        .overlay(Color("ColorAzulVerdePaleta"))
-                                    
+                                        Divider()
+                                            .frame(width: 300.0, height: 1.4)
+                                            .overlay(Color("ColorAzulVerdePaleta"))
+                                    }
+                                } else {
+                                    Text("No tickets available") 
                                 }
+
+                                
+                                
                             }
                         }
                     }
@@ -69,7 +77,6 @@ struct TicketA: View {
 
 struct TicketA_Previews: PreviewProvider {
     static var previews: some View {
-        @State var tickets : Array<Ticket> = []
-        TicketA(tickets : tickets)
+        TicketA()
     }
 }

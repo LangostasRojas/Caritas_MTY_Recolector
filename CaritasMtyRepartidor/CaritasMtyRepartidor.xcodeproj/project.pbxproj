@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FBA21AEB2AAB8573008874AD /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA21AEA2AAB8573008874AD /* GlobalVariables.swift */; };
 		FBD24EAF2AAA2741009A7D83 /* GetTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD24EAE2AAA2741009A7D83 /* GetTicket.swift */; };
 		FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */; };
 		FBF4C5402AA8D40100B3757D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FBF4C53F2AA8D40100B3757D /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FBA21AEA2AAB8573008874AD /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		FBD24EAE2AAA2741009A7D83 /* GetTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetTicket.swift; sourceTree = "<group>"; };
 		FBF4C5382AA8D40000B3757D /* CaritasMtyRepartidor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaritasMtyRepartidor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaritasMtyRepartidorApp.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				FBF7E6DA2AA8D9BA001E4D7D /* VistaTicket.swift */,
 				FBF7E6DF2AA8DBF0001E4D7D /* TicketRow.swift */,
 				FBF4C5492AA8D41D00B3757D /* Login.swift */,
+				FBA21AEA2AAB8573008874AD /* GlobalVariables.swift */,
 				FBF7E6EA2AA8E29A001E4D7D /* TicketA.swift */,
 				FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */,
 			);
@@ -195,6 +198,7 @@
 				FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */,
 				FBF7E6E52AA8DC9C001E4D7D /* ModelData.swift in Sources */,
 				FBF7E6EB2AA8E29A001E4D7D /* TicketA.swift in Sources */,
+				FBA21AEB2AAB8573008874AD /* GlobalVariables.swift in Sources */,
 				FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */,
 				FBF7E6DB2AA8D9BA001E4D7D /* VistaTicket.swift in Sources */,
 				FBF4C54C2AA8D44900B3757D /* Data.swift in Sources */,

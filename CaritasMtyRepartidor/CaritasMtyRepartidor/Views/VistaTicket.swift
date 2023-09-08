@@ -68,6 +68,23 @@ struct VistaTicket: View {
                     .foregroundColor(.white)
 
                 Button(action: {
+                            
+                    if let repartidor = repartidor {
+                        completeTicket(ticketID: ticket.id, token: repartidor.accessToken) { success in
+                            
+                            if(success){
+                                
+                                print("EXITOOO!")
+                                
+                            }else{
+                                
+                                print("SUPER F no jalo")
+                                
+                            }
+                            
+                            
+                        }
+                    }
                     
                 }, label: {
                     Text("Completar Entrega")

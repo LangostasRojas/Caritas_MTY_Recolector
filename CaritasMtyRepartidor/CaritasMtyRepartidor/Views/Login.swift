@@ -7,7 +7,10 @@
 
 import SwiftUI
 
+
+
 struct Login: View {
+
     @State var username: String = ""
     @State var password: String = ""
     @State var lista: Array<Ticket> = []
@@ -37,7 +40,7 @@ struct Login: View {
                             .foregroundColor(.white)
                             .cornerRadius(15)
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
-                            .autocorrectionDisabled(true)
+                            .autocorrectionDisabled(true).autocapitalization(.none)
                         
                         
                         Spacer().frame(height: 50)
@@ -66,9 +69,17 @@ struct Login: View {
                             login(usernamelog: "\(username)", passwordlog: "\(password)") {
                              (user, error) in
                              if let user = user {
-                                 print(user)
                                  
-                                  lista = callTickets(userID: user.userId, token: user.accessToken)
+                    
+                                 repartidor = user
+                                 print(user)
+                                
+                                 listaTicketsR = callTickets(userID: user.userId, token: user.accessToken)
+                                 if let unwrappedListaTicketsR = listaTicketsR {
+                                     print(unwrappedListaTicketsR)
+                                 } else {
+                                     print("listaTicketsR is nil")
+                                 }
                                  shouldNav = true
                              } else if let error = error {
                                  print(error)
@@ -77,7 +88,7 @@ struct Login: View {
                              }
                         }.background(
                             NavigationLink(destination:
-                                            TicketA(tickets: lista).navigationBarBackButtonHidden(true), isActive: $shouldNav){
+                                            TicketA().navigationBarBackButtonHidden(true), isActive: $shouldNav){
                                 
                             }).padding(80)
                         
