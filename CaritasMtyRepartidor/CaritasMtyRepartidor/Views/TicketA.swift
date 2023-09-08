@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TicketA: View {
+    @State  var tickets: Array<Ticket>
     var body: some View {
         NavigationStack{
                 ZStack{
@@ -31,7 +32,7 @@ struct TicketA: View {
                             .offset(x:-70,y:-25)
                         ScrollView{
                             LazyVStack(spacing: 10){
-                                ForEach(listaTickets){ ticketItem in
+                                ForEach(tickets){ ticketItem in
                                     NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
                                         TicketRow(ticket: ticketItem)
                                     }.buttonStyle(.plain)
@@ -68,6 +69,7 @@ struct TicketA: View {
 
 struct TicketA_Previews: PreviewProvider {
     static var previews: some View {
-        TicketA()
+        @State var tickets : Array<Ticket> = []
+        TicketA(tickets : tickets)
     }
 }

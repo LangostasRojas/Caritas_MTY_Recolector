@@ -84,7 +84,6 @@
 				FBF7E6E12AA8DC46001E4D7D /* Views */,
 				FBF4C54B2AA8D44900B3757D /* Data.swift */,
 				FBF4C54D2AA8D45D00B3757D /* User.swift */,
-				FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */,
 				FBF7E6DC2AA8DA29001E4D7D /* ListaTickets */,
 				FBF4C53F2AA8D40100B3757D /* Assets.xcassets */,
 				FBF4C5412AA8D40100B3757D /* Preview Content */,
@@ -117,6 +116,7 @@
 				FBF7E6DF2AA8DBF0001E4D7D /* TicketRow.swift */,
 				FBF4C5492AA8D41D00B3757D /* Login.swift */,
 				FBF7E6EA2AA8E29A001E4D7D /* TicketA.swift */,
+				FBF4C54F2AA8D46F00B3757D /* BotonUni.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";

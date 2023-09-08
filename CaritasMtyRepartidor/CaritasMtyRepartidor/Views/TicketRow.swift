@@ -25,7 +25,7 @@ struct TicketRow: View {
                         .foregroundColor(.white)
                         .padding(.bottom,5)
                         .bold()
-                    Text("$ \(String(format: "%.2f", ticket.cantidad))")
+                    Text("$ \(String(format: "%.2f", ticket.importe))")
                         .font(.title)
                         .foregroundColor(.white)
                     
@@ -42,6 +42,7 @@ struct TicketRow: View {
                 
                 
             }.padding()
+                .background(Color("BgColor"))
             
         }
     }

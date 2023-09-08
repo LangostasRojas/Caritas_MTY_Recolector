@@ -8,34 +8,33 @@
 import Foundation
 
 
-func callAPILista(userID : Int) -> Array<Ticket> {
-    var lista: Array<Ticket> = []
-    guard let url = URL(string:"http://10.14.255.66:10204/get-recolector-tickets?recolectorId=\(userID)") else{
-        return lista
-    }
-    
+func callTickets(userID: Int,token: String) -> [Ticket] {
+    var lista: [Ticket] = []
+    var request = URLRequest(url: URL(string: "http://10.22.163.240:10201/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
+    request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+
+    request.httpMethod = "GET"
+
     let group = DispatchGroup()
     group.enter()
-    
-    let task = URLSession.shared.dataTask(with: url){
-        data, response, error in
-        
+
+    let task = URLSession.shared.dataTask(with: request) { data, _, error in
         let jsonDecoder = JSONDecoder()
-        if (data != nil){
-            do{
-                let ticketList = try jsonDecoder.decode([Ticket].self, from: data!)
+
+        if let data = data {
+            do {
+                let ticketList = try jsonDecoder.decode([Ticket].self, from: data)
                 lista = ticketList
-                for ticketItem in ticketList {
-                    print("Id: \(ticketItem.id) - Nombre: \(ticketItem.nombre) ")
-                }
-            }catch{
+            } catch {
                 print(error)
             }
         }
+
+        group.leave()
     }
+
     task.resume()
     group.wait()
+
     return lista
 }
-
-
