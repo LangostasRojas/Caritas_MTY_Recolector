@@ -10,6 +10,7 @@ import SwiftUI
 struct Login: View {
     @State var username: String = ""
     @State var password: String = ""
+    @State var alerta: String = ""
     @State var lista: Array<Ticket> = []
     @State var shouldNav: Bool = false
     var body: some View {
@@ -28,8 +29,7 @@ struct Login: View {
                     VStack{
                         
                         Spacer().frame(height: 350)
-                        
-                        TextField("", text: $username, prompt: Text("Ingresa tu email").foregroundColor(.white))
+                        TextField("", text: $username, prompt: Text("Ingresa tu usuario").foregroundColor(.white))
                             .padding()
                             .frame(width: 350, height: 55)
                             .background(.clear)
@@ -61,16 +61,31 @@ struct Login: View {
                             .cornerRadius(15)
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                             .autocorrectionDisabled(true)
+                        Spacer().frame(height: 25)
                         
-                        BotonUni(textoboton: "Iniciar Sesion",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
+                        ZStack{
+                            Rectangle()
+                                .foregroundColor(Color("ColorError"))
+                                .frame(width: 350,height: 40)
+                                .cornerRadius(20)
+                            Text("\(alerta)").foregroundColor(.white).font(.system(size: 20)).bold().multilineTextAlignment(.center)
+                                
+                        }
+                       
+                           
+                        
+                        
+                        BotonUni(textoboton: "Iniciar Sesión",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
                             login(usernamelog: "\(username)", passwordlog: "\(password)") {
                              (user, error) in
                              if let user = user {
+                                 
                                  print(user)
                                  
                                   lista = callTickets(userID: user.userId, token: user.accessToken)
                                  shouldNav = true
                              } else if let error = error {
+                                 alerta = "Usuario o contraseña incorrectos"
                                  print(error)
                                  shouldNav = false
                              }
@@ -79,7 +94,7 @@ struct Login: View {
                             NavigationLink(destination:
                                             TicketA(tickets: lista).navigationBarBackButtonHidden(true), isActive: $shouldNav){
                                 
-                            }).padding(80)
+                            }).padding(55)
                         
 //                        NavigationLink(destination: TicketA().navigationBarBackButtonHidden(true)){
 //                            Text("Inicia Sesión")

@@ -10,7 +10,7 @@ import Foundation
 
 func callTickets(userID: Int,token: String) -> [Ticket] {
     var lista: [Ticket] = []
-    var request = URLRequest(url: URL(string: "http://10.22.163.240:10201/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
+    var request = URLRequest(url: URL(string: "http://10.22.223.123:10201/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
     request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
     request.httpMethod = "GET"
