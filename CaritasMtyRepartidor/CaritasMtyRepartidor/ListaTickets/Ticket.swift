@@ -22,7 +22,7 @@ struct Ticket: Codable, Identifiable {
     }
 
     init(id: Int, nombre: String, importe: Float, direccion: String) {
-        self.id = 1
+        self.id = id
         self.nombre = nombre
         self.importe = importe
         self.direccion = direccion

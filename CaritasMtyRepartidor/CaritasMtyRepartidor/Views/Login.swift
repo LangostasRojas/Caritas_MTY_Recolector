@@ -13,6 +13,9 @@ struct Login: View {
 
     @State var username: String = ""
     @State var password: String = ""
+
+    @State var boolalerta: Bool = false
+
     @State var lista: Array<Ticket> = []
     @State var shouldNav: Bool = false
     var body: some View {
@@ -65,7 +68,24 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                             .autocorrectionDisabled(true)
                         
-                        BotonUni(textoboton: "Iniciar Sesion",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
+
+                        
+                        if boolalerta{
+                            ZStack{
+                                Rectangle()
+                                    .foregroundColor(Color("ColorError"))
+                                    .frame(width: 350,height: 40)
+                                    .cornerRadius(20)
+                                Text("Usuario o contraseña incorrecto").foregroundColor(.white).font(.system(size: 20)).bold().multilineTextAlignment(.center)
+                                    
+                            }
+                        }
+                       
+                           
+                        
+                        
+                        BotonUni(textoboton: "Iniciar Sesión",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
+
                             login(usernamelog: "\(username)", passwordlog: "\(password)") {
                              (user, error) in
                              if let user = user {
@@ -82,7 +102,9 @@ struct Login: View {
                                  }
                                  shouldNav = true
                              } else if let error = error {
+
                                  print(error)
+                                 boolalerta = true
                                  shouldNav = false
                              }
                              }
