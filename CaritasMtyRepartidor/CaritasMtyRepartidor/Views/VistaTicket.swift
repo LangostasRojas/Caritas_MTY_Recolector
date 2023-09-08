@@ -27,7 +27,7 @@ struct VistaTicket: View {
                 HStack{
                     Text("Ticket - \(ticket.id)")
                         .foregroundColor(.white)
-                        .font(.system(size: 40))
+                        .font(.system(size: 34))
                         .fontWeight(.bold)
                         .padding(.leading, 40.0)
                     Spacer()
@@ -38,7 +38,8 @@ struct VistaTicket: View {
                     .fill(Color("ColorAzulVerdePaleta"))
                     .frame(width: 170,height: 7)
                     .cornerRadius(20)
-                    .offset(x:-60,y:-25)
+                    .offset(x:-64,y:-25)
+                
                 Image("Mapa")
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
@@ -58,9 +59,9 @@ struct VistaTicket: View {
                             Text("Cantidad")
                                 .padding(.vertical,5)
                                 .fontWeight(.bold)
-                            Text("$ \(String(format: "%.2f", ticket.importe))")
-                                .padding(.bottom,10)
-                        }
+                            Text("$ \(String(format: "%.2f", ticket.importe))").bold()
+                                .font(.system(size: 24))
+                                .padding(10).overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))                        }
                         .font(.system(size: 20))
                         .padding(.horizontal,20.00)
                        
@@ -87,8 +88,8 @@ struct VistaTicket: View {
                     }
                     
                 }, label: {
-                    Text("Completar Entrega")
-                        .font(.title2)
+                    Text("Completar")
+                        .font(.title)
                         .bold()
                         .foregroundColor(.white)
                     
@@ -97,6 +98,7 @@ struct VistaTicket: View {
                         .cornerRadius(30)
                         .shadow(color:.black,radius: 2,y:2)
                 })
+                .padding(.top, 10)
 
             
                 
