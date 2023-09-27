@@ -16,7 +16,8 @@ import SwiftUI
 
 struct VistaTicket: View {
     var ticket : Ticket
-
+    @Environment(\.dismiss) var dismiss
+    
     var body: some View {
         
         ZStack{
@@ -77,10 +78,11 @@ struct VistaTicket: View {
                                 print("EXITOOO!")
                                 
                                 if let listat = listaTicketsR{
-                                    
+                                    dismiss()
                                     listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
                                     
                                 }
+                                
                                 
                             }else{
                                 
@@ -88,8 +90,7 @@ struct VistaTicket: View {
                                 
                             }
                             
-                            
-                        }
+                                                    }
                     }
                     
                 }, label: {
@@ -102,6 +103,8 @@ struct VistaTicket: View {
                         .background(Color("ColorAzulVerdePaleta"))
                         .cornerRadius(30)
                         .shadow(color:.black,radius: 2,y:2)
+                            
+                        
                 })
                 .padding(.top, 10)
 

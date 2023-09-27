@@ -12,7 +12,7 @@ func callTickets(userID: Int,token: String) -> [Ticket] {
     
     var lista: [Ticket] = []
     
-    var request = URLRequest(url: URL(string: "http://10.22.223.123:10201/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
+    var request = URLRequest(url: URL(string: "http://10.22.223.211:10201/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
     request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
     request.httpMethod = "GET"
@@ -47,7 +47,7 @@ func completeTicket(ticketID: Int, token: String, completion: @escaping (Bool) -
     
     let parameters = "{\"ticketId\": \(ticketID)}"
     if let postData = parameters.data(using: .utf8) {
-        var request = URLRequest(url: URL(string: "http://10.22.223.123:10201/marcar-completado")!)
+        var request = URLRequest(url: URL(string: "http://10.22.223.211:10201/marcar-completado")!)
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
