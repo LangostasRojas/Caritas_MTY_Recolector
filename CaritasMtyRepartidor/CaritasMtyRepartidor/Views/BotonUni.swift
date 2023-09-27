@@ -9,13 +9,13 @@ import SwiftUI
 
 struct BotonUni: View {
     var textoboton : String = ""
-    var colorboton : String = "ColorAzulVerdePaleta"
+    var colorboton : String = ""
     var widthboton : Double = 0.0
     var heightboton : Double = 0.0
-    
+    var actionboton : () -> Void
     var body: some View {
         Button(action: {
-            
+            actionboton()
         }, label: {
             Text("\(textoboton)")
                 .font(.title)
@@ -31,8 +31,8 @@ struct BotonUni: View {
     }
 }
 
-struct BotonUni_Previews: PreviewProvider {
-    static var previews: some View {
-        BotonUni()
-    }
-}
+//struct BotonUni_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BotonUni()
+//    }
+//}
