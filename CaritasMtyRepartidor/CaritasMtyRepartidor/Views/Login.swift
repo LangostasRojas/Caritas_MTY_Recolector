@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct Login: View {
 
     @State var username: String = ""
@@ -68,8 +66,6 @@ struct Login: View {
                             .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                             .autocorrectionDisabled(true)
                         
-
-                        
                         if boolalerta{
                             ZStack{
                                 Rectangle()
@@ -80,17 +76,12 @@ struct Login: View {
                                     
                             }
                         }
-                       
-                           
-                        
                         
                         BotonUni(textoboton: "Iniciar Sesión",colorboton: "ColorAzulVerdePaleta",widthboton: 280, heightboton: 60){
 
                             login(usernamelog: "\(username)", passwordlog: "\(password)") {
                              (user, error) in
                              if let user = user {
-                                 
-                    
                                  repartidor = user
                                  print(user)
                                 
@@ -171,9 +162,6 @@ func isValidEmail(_ email: String) -> Bool {
     let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
     return emailPredicate.evaluate(with: email)
 }
-
-
-                        
                         
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
