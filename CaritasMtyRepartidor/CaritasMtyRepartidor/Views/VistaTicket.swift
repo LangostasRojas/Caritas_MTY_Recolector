@@ -17,7 +17,7 @@ import SwiftUI
 struct VistaTicket: View {
     var ticket : Ticket
     
-
+    
     var body: some View {
         ZStack{
             Color("BgColor")

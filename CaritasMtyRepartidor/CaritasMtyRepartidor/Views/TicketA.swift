@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TicketA: View {
+    
+    @State var listaTemp: Array<Ticket> = []
     var body: some View {
         NavigationStack{
                 ZStack{
@@ -34,9 +36,7 @@ struct TicketA: View {
                                 
                                 
                                 if let unwrappedListaTicketsR = listaTicketsR {
-                                    
-                                    
-                                    ForEach(unwrappedListaTicketsR) { ticketItem in
+                                    ForEach(listaTemp) { ticketItem in
                                         NavigationLink(destination: VistaTicket(ticket: ticketItem)) {
                                             
                                             TicketRow(ticket: ticketItem)
@@ -58,21 +58,16 @@ struct TicketA: View {
                     }
 
                     
-                    
-//                    List(listaTickets){ ticketItem in
-//                        NavigationLink(destination:VistaTicket(ticket: ticketItem) ){
-//                            TicketRow(ticket: ticketItem)
-//                        }.buttonStyle(.plain)
-//                            .padding(0)
-//
-//                    }.scrollContentBackground(.hidden)
-//                        .listStyle(.plain)
-//                        .listRowSeparator(.hidden)
-//                        .padding(0)
-                    
                         
                 }
            
+        }.onAppear(){
+            
+            if let repartidor = repartidor {
+                listaTemp = callTickets(userID: repartidor.userId, token: repartidor.accessToken)
+
+            }
+            
         }
             
     }
