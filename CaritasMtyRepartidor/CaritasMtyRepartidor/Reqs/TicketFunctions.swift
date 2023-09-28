@@ -42,12 +42,12 @@ func callTickets(userID: Int,token: String) -> [Ticket] {
 }
 
 
-func completeTicket(ticketID: Int, token: String, completion: @escaping (Bool) -> Void) {
+func completeTicket(ticketID: Int, token: String, estatus: Int, completion: @escaping (Bool) -> Void) {
     var choice = true
     
-    let parameters = "{\"ticketId\": \(ticketID)}"
+    let parameters = "{\"ticketId\": \(ticketID), \"estatus\": \(estatus)}"
     if let postData = parameters.data(using: .utf8) {
-        var request = URLRequest(url: URL(string: "http://10.22.223.123:10201/marcar-completado")!)
+        var request = URLRequest(url: URL(string: "http://10.22.216.78:10204/mark-completed")!)
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
@@ -58,7 +58,6 @@ func completeTicket(ticketID: Int, token: String, completion: @escaping (Bool) -
                 print("Error: \(error)")
                 choice = false
             }
-            
             completion(choice)
         }
         

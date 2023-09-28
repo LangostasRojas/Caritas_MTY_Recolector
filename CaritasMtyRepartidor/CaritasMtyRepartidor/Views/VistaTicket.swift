@@ -16,11 +16,10 @@ import SwiftUI
 
 struct VistaTicket: View {
     var ticket : Ticket
-
+    
+    
     var body: some View {
-        
         ZStack{
-        
             Color("BgColor")
                 .ignoresSafeArea()
             VStack{
@@ -56,39 +55,27 @@ struct VistaTicket: View {
                                 .padding(.bottom,5.0)
                                 .fontWeight(.bold)
                             Text("Calle Eugenio Garza Sada, Lomas Garza, Boca del Rio, Veracruz, C.P. 95264, Mexico")
-                            Text("Cantidad")
-                                .padding(.vertical,5)
-                                .fontWeight(.bold)
                             Text("$ \(String(format: "%.2f", ticket.importe))").bold()
-                                .font(.system(size: 24))
-                                .padding(10).overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))                        }
+                                .font(.system(size: 36))
+                                .padding(.vertical,5)
+                        }
                         .font(.system(size: 20))
                         .padding(.horizontal,20.00)
-                       
                     }
                     .foregroundColor(.white)
 
                 Button(action: {
-                            
                     if let repartidor = repartidor {
-                        completeTicket(ticketID: ticket.id, token: repartidor.accessToken) { success in
+                        completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) { success in
                             
                             if(success){
                                 print("EXITOOO!")
-                                
                                 if let listat = listaTicketsR{
-                                    
                                     listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
-                                    
                                 }
-                                
-                            }else{
-                                
+                            } else{
                                 print("SUPER F no jalo")
-                                
                             }
-                            
-                            
                         }
                     }
                     
