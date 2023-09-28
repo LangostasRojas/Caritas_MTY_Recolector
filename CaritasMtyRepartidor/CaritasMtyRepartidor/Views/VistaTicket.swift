@@ -96,7 +96,7 @@ struct VistaTicket: View {
                 else {
                     Button(action: {
                         if let repartidor = repartidor {
-                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) { success in
+                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) { (success, error) in
                                 if(success){
                                     if let listat = listaTicketsR{
                                         listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
@@ -121,7 +121,7 @@ struct VistaTicket: View {
                     
                     Button(action: {
                         if let repartidor = repartidor {
-                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) { success in
+                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) { (success, error) in
                                 if(success){
                                     if let listat = listaTicketsR{
                                         listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
