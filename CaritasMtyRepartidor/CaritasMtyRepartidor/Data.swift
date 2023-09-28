@@ -20,8 +20,6 @@ import Foundation
 //}
 
 func login(usernamelog: String, passwordlog: String, completion: @escaping (User?, Error?) -> Void) {
-    
-    
     guard let url = URL(string:"http://10.22.216.78:10204/sign-in") else{
         completion(nil, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
@@ -40,9 +38,7 @@ func login(usernamelog: String, passwordlog: String, completion: @escaping (User
     request.httpBody = jsonData
     
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-    
-    
-    
+
     URLSession.shared.dataTask(with: request){
         data, response, error in
         if let error = error{
@@ -60,18 +56,12 @@ func login(usernamelog: String, passwordlog: String, completion: @escaping (User
                 DispatchQueue.main.async {
                     completion(user, nil)
                 }
-                
             } catch {
                 DispatchQueue.main.async {
-                    print("Error: \(responseString)")
+//                    print("Error: \(responseString)")\
                     completion(nil, error)
                 }
-                
             }
-            
-            
-            
-            
         }
     }.resume()
         

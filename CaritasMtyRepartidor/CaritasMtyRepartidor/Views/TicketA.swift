@@ -37,7 +37,7 @@ struct TicketA: View {
                                     
                                     
                                     ForEach(unwrappedListaTicketsR) { ticketItem in
-                                        NavigationLink(destination: VistaTicket(ticket: ticketItem)) {
+                                        NavigationLink(destination: VistaTicket(ticket: ticketItem, statusRoute: ticketItem.estatusVisita)) {
                                             
                                             TicketRow(ticket: ticketItem)
                                         }

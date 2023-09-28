@@ -83,22 +83,22 @@ struct Login: View {
                              (user, error) in
                              if let user = user {
                                  repartidor = user
-                                 print(user)
+//                                 print(user)
                                 
                                  listaTicketsR = callTickets(userID: user.userId, token: user.accessToken)
                                  if let unwrappedListaTicketsR = listaTicketsR {
-                                     print(unwrappedListaTicketsR)
+//                                     print(unwrappedListaTicketsR)
                                  } else {
-                                     print("listaTicketsR is nil")
+//                                     print("listaTicketsR is nil")
                                  }
                                  shouldNav = true
                              } else if let error = error {
-
                                  print(error)
                                  boolalerta = true
                                  shouldNav = false
+                                 
                              }
-                             }
+                            }
                         }.background(
                             NavigationLink(destination:
                                             TicketA().navigationBarBackButtonHidden(true), isActive: $shouldNav){
