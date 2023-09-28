@@ -15,8 +15,11 @@
 import SwiftUI
 
 struct VistaTicket: View {
-    var ticket : Ticket
     
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    
+    var ticket : Ticket
+    @State var statusRoute: Int
     
     var body: some View {
         ZStack{
@@ -64,40 +67,94 @@ struct VistaTicket: View {
                     }
                     .foregroundColor(.white)
 
-                Button(action: {
-                    if let repartidor = repartidor {
-                        completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) { success in
-                            
-                            if(success){
-                                print("EXITOOO!")
-                                if let listat = listaTicketsR{
-                                    listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                if (statusRoute == 0) {
+                    Button(action: {
+                        if let repartidor = repartidor {
+                            markOnRouteTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) {
+                                (success, error) in
+                                
+                                if(success){
+                                    statusRoute = 1
+                                } else{
+                                    print("SUPER F no jalo")
                                 }
-                            } else{
-                                print("SUPER F no jalo")
                             }
                         }
-                    }
+                        
+                    }, label: {
+                        Text("En Ruta")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                            .frame(width: 280.0, height: 70.0)
+                            .background(Color("ColorAzulVerdePaleta"))
+                            .cornerRadius(30)
+                            .shadow(color:.black,radius: 2,y:2)
+                    })
+                    .padding(.top, 10)
+                }
+                else {
+                    Button(action: {
+                        if let repartidor = repartidor {
+                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) {
+                                (success, error) in
+                                
+                                if(success){
+                                    print("EXITOOO!")
+                                    if let listat = listaTicketsR{
+                                        listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
+                                } else{
+                                    print("SUPER F no jalo")
+                                }
+                            }
+                        }
+                    }, label: {
+                        Text("Recolectado")
+                            .font(.title)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                            .frame(width: 280.0, height: 70.0)
+                            .background(Color("ColorAzulVerdePaleta"))
+                            .cornerRadius(30)
+                            .shadow(color:.black,radius: 2,y:2)
+                    })
+                    .padding(.top, 10)
                     
-                }, label: {
-                    Text("Completar")
-                        .font(.title)
-                        .bold()
-                        .foregroundColor(.white)
-                    
-                        .frame(width: 280.0, height: 70.0)
-                        .background(Color("ColorAzulVerdePaleta"))
-                        .cornerRadius(30)
-                        .shadow(color:.black,radius: 2,y:2)
-                })
-                .padding(.top, 10)
+                    Button(action: {
+                        if let repartidor = repartidor {
+                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) {
+                                (success, error) in
+                                
+                                if(success){
+                                    print("EXITOOO!")
+                                    if let listat = listaTicketsR{
+                                        listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                        self.presentationMode.wrappedValue.dismiss()
+                                    }
+                                } else{
+                                    print("SUPER F no jalo")
+                                }
+                            }
+                        }
+                    }, label: {
+                        Text("No recolectado")
+                            .font(.title2)
+                            .bold()
+                            .foregroundColor(.white)
+                        
+                            .frame(width: 220.0, height: 60.0)
+                            .background(Color("ColorAzulVerdeOscuro"))
+                            .cornerRadius(30)
+                            .shadow(color:.black,radius: 2,y:2)
+                    })
+                    .padding(.top, 10)
+                }
 
-            
-                
-                    
             }
-           
-            
         }
     }
 }
@@ -117,7 +174,7 @@ func removeItem(arreglo: Array<Ticket>, ticket: Ticket) -> Int{
 struct VistaTicket_Previews: PreviewProvider {
     static var previews: some View {
         
-        VistaTicket(ticket: listaTickets[0])
+        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita)
     }
 }
 

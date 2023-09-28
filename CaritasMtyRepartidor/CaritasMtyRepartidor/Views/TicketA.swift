@@ -37,7 +37,7 @@ struct TicketA: View {
                                 
                                 if let unwrappedListaTicketsR = listaTicketsR {
                                     ForEach(listaTemp) { ticketItem in
-                                        NavigationLink(destination: VistaTicket(ticket: ticketItem)) {
+                                        NavigationLink(destination: VistaTicket(ticket: ticketItem, statusRoute: ticketItem.estatusVisita)) {
                                             
                                             TicketRow(ticket: ticketItem)
                                         }
