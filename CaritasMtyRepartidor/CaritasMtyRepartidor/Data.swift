@@ -22,7 +22,7 @@ import Foundation
 func login(usernamelog: String, passwordlog: String, completion: @escaping (User?, Error?) -> Void) {
     
     
-    guard let url = URL(string:"http://10.22.216.78:10204/sign-in") else{
+    guard let url = URL(string:"http://10.22.228.116:10204/sign-in") else{
         completion(nil, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
