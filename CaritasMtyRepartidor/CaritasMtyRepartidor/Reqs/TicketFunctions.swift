@@ -12,7 +12,7 @@ func callTickets(userID: Int,token: String) -> [Ticket] {
     
     var lista: [Ticket] = []
     
-    var request = URLRequest(url: URL(string: "http://10.22.216.78:10204/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
+    var request = URLRequest(url: URL(string: "http://10.22.228.116:10204/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
     request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
     request.httpMethod = "GET"
@@ -43,7 +43,7 @@ func callTickets(userID: Int,token: String) -> [Ticket] {
 
 
 func completeTicket(ticketID: Int, token: String, estatus: Int, completion: @escaping (Bool, Error?) -> Void) {
-    guard let url = URL(string:"http://10.22.216.78:10204/mark-completed") else {
+    guard let url = URL(string:"http://10.22.228.116:10204/mark-completed") else {
         completion(false, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
@@ -99,7 +99,7 @@ func completeTicket(ticketID: Int, token: String, estatus: Int, completion: @esc
 }
 
 func markOnRouteTicket(ticketID: Int, token: String, estatus: Int, completion: @escaping (Bool, Error?) -> Void) {
-    guard let url = URL(string:"http://10.22.216.78:10204/mark-visit") else{
+    guard let url = URL(string:"http://10.22.228.116:10204/mark-visit") else{
         completion(false, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
@@ -107,6 +107,61 @@ func markOnRouteTicket(ticketID: Int, token: String, estatus: Int, completion: @
     let body: [String: Any] = [
         "ticketId": "\(ticketID)",
         "estatus": "\(estatus)"
+    ]
+    
+    let jsonData = try? JSONSerialization.data(withJSONObject: body)
+    
+    var request = URLRequest(url: url)
+    
+    request.httpMethod = "POST"
+    request.httpBody = jsonData
+    request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+    request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+
+    URLSession.shared.dataTask(with: request){
+        data, response, error in
+        if let error = error{
+            DispatchQueue.main.async {
+                completion(false, error)
+            }
+            return
+        }
+        guard let httpResponse = response as? HTTPURLResponse else {
+            DispatchQueue.main.async {
+                completion(false, NSError(domain: "Invalid Response", code: 500))
+            }
+            return
+        }
+        if httpResponse.statusCode == 200 {
+            do {
+                DispatchQueue.main.async {
+                    completion(true, nil)
+                }
+            }
+            catch {
+                DispatchQueue.main.async {
+                    completion(false, error)
+                }
+            }
+        }
+        else {
+            DispatchQueue.main.async {
+                completion(false, NSError(domain: "Server Error", code: httpResponse.statusCode))
+            }
+        }
+    }.resume()
+    return
+}
+
+func sendComment(ticketID: Int, token: String, comment: String, completion: @escaping (Bool, Error?) -> Void) {
+    guard let url = URL(string:"http://10.22.228.116:10204/set-comment") else{
+        completion(false, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
+        return
+    }
+    
+    let body: [String: Any] = [
+        "ticketId": "\(ticketID)",
+        "comment": "\(comment)"
     ]
     
     let jsonData = try? JSONSerialization.data(withJSONObject: body)

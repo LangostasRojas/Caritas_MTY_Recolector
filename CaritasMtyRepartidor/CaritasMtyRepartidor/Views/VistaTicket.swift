@@ -20,6 +20,8 @@ struct VistaTicket: View {
     
     var ticket : Ticket
     @State var statusRoute: Int
+    @State var finished: Bool
+    @State var comentarios: String
     
     var body: some View {
         ZStack{
@@ -46,7 +48,8 @@ struct VistaTicket: View {
                     .resizable(resizingMode: .stretch)
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250)
-
+                
+                if(!finished){
                     VStack{
                         Group{
                             Text("Nombre: ")
@@ -66,94 +69,151 @@ struct VistaTicket: View {
                         .padding(.horizontal,20.00)
                     }
                     .foregroundColor(.white)
-
-                if (statusRoute == 0) {
-                    Button(action: {
-                        if let repartidor = repartidor {
-                            markOnRouteTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) {
-                                (success, error) in
-                                
-                                if(success){
-                                    statusRoute = 1
-                                } else{
-                                    print("SUPER F no jalo")
+                    
+                    if (statusRoute == 0) {
+                        Button(action: {
+                            if let repartidor = repartidor {
+                                markOnRouteTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) {
+                                    (success, error) in
+                                    
+                                    if(success){
+                                        statusRoute = 1
+                                    } else{
+                                        print("SUPER F no jalo")
+                                    }
                                 }
                             }
-                        }
+                            
+                        }, label: {
+                            Text("En Ruta")
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.white)
+                            
+                                .frame(width: 280.0, height: 70.0)
+                                .background(Color("ColorAzulVerdePaleta"))
+                                .cornerRadius(30)
+                                .shadow(color:.black,radius: 2,y:2)
+                        })
+                        .padding(.top, 10)
+                    }
+                    else {
+                        Button(action: {
+                            if let repartidor = repartidor {
+                                completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) {
+                                    (success, error) in
+                                    
+                                    if(success){
+                                        print("EXITOOO!")
+                                        if let listat = listaTicketsR{
+                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                        finished = true
+    //                                        self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                    } else{
+                                        print("SUPER F no jalo")
+                                    }
+                                }
+                            }
+                        }, label: {
+                            Text("Recolectado")
+                                .font(.title)
+                                .bold()
+                                .foregroundColor(.white)
+                            
+                                .frame(width: 280.0, height: 70.0)
+                                .background(Color("ColorAzulVerdePaleta"))
+                                .cornerRadius(30)
+                                .shadow(color:.black,radius: 2,y:2)
+                        })
+                        .padding(.top, 10)
                         
-                    }, label: {
-                        Text("En Ruta")
-                            .font(.title)
-                            .bold()
-                            .foregroundColor(.white)
-                        
-                            .frame(width: 280.0, height: 70.0)
-                            .background(Color("ColorAzulVerdePaleta"))
-                            .cornerRadius(30)
-                            .shadow(color:.black,radius: 2,y:2)
-                    })
-                    .padding(.top, 10)
+                        Button(action: {
+                            if let repartidor = repartidor {
+                                completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) {
+                                    (success, error) in
+                                    
+                                    if(success){
+                                        print("EXITOOO!")
+                                        if let listat = listaTicketsR{
+                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                            finished = true
+                                           //self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                    } else{
+                                        print("SUPER F no jalo")
+                                    }
+                                }
+                            }
+                        }, label: {
+                            Text("No recolectado")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.white)
+                            
+                                .frame(width: 220.0, height: 60.0)
+                                .background(Color("ColorAzulVerdeOscuro"))
+                                .cornerRadius(30)
+                                .shadow(color:.black,radius: 2,y:2)
+                        })
+                        .padding(.top, 10)
+                    }
+
                 }
                 else {
-                    Button(action: {
-                        if let repartidor = repartidor {
-                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) {
-                                (success, error) in
-                                
-                                if(success){
-                                    print("EXITOOO!")
-                                    if let listat = listaTicketsR{
-                                        listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }
-                                } else{
-                                    print("SUPER F no jalo")
-                                }
-                            }
-                        }
-                    }, label: {
-                        Text("Recolectado")
-                            .font(.title)
-                            .bold()
+                    VStack {
+                        Text("Comentarios")
                             .foregroundColor(.white)
+                            .font(.system(size: 34))
+                            .fontWeight(.bold)
+                            .padding(.top,20)
                         
-                            .frame(width: 280.0, height: 70.0)
-                            .background(Color("ColorAzulVerdePaleta"))
-                            .cornerRadius(30)
-                            .shadow(color:.black,radius: 2,y:2)
-                    })
-                    .padding(.top, 10)
-                    
-                    Button(action: {
-                        if let repartidor = repartidor {
-                            completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) {
-                                (success, error) in
-                                
-                                if(success){
-                                    print("EXITOOO!")
-                                    if let listat = listaTicketsR{
-                                        listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
-                                        self.presentationMode.wrappedValue.dismiss()
-                                    }
-                                } else{
-                                    print("SUPER F no jalo")
-                                }
-                            }
-                        }
-                    }, label: {
-                        Text("No recolectado")
-                            .font(.title2)
-                            .bold()
+                        TextField("", text: $comentarios, prompt: Text(" Escribe tus comentarios...").foregroundColor(.white).bold(), axis: .vertical)
                             .foregroundColor(.white)
+                            .padding()
+                        //                        .frame(width: 350, height: 200)
+                            .background(.clear)
+                            .tint(.white).lineLimit(8...)
+                            .foregroundColor(.white)
+                            .cornerRadius(15)
+                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
+                            .autocorrectionDisabled(true).autocapitalization(.none)
+                            .padding(.top,10)
                         
-                            .frame(width: 220.0, height: 60.0)
-                            .background(Color("ColorAzulVerdeOscuro"))
-                            .cornerRadius(30)
-                            .shadow(color:.black,radius: 2,y:2)
-                    })
-                    .padding(.top, 10)
+                        Button(action: {
+//                            if let repartidor = repartidor {
+//                                sendComment(ticketID: ticket.id, token: repartidor.accessToken, comment: comentarios) {
+//                                    (success, error) in
+//
+//                                    if(success){
+//                                        print("EXITOOO!")
+//                                        if let listat = listaTicketsR{
+//                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+//                                            finished = true
+//                                            self.presentationMode.wrappedValue.dismiss()
+//                                        }
+//                                    } else{
+//                                        print("SUPER F no jalo")
+//                                    }
+//                                }
+//                            }
+                        }, label: {
+                            Text("Enviar")
+                                .font(.title2)
+                                .bold()
+                                .foregroundColor(.white)
+                            
+                                .frame(width: 220.0, height: 60.0)
+                                .background(Color("ColorAzulVerdeOscuro"))
+                                .cornerRadius(30)
+                                .shadow(color:.black,radius: 2,y:2)
+                        })
+                        .padding(.top, 10)
+                    }
+                    .padding(.horizontal, 30.0)
                 }
-
+                       
+                
             }
         }
     }
@@ -174,7 +234,7 @@ func removeItem(arreglo: Array<Ticket>, ticket: Ticket) -> Int{
 struct VistaTicket_Previews: PreviewProvider {
     static var previews: some View {
         
-        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita)
+        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita, finished: false,comentarios: "")
     }
 }
 
