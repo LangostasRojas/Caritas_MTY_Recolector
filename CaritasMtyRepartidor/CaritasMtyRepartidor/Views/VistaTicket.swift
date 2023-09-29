@@ -105,11 +105,7 @@ struct VistaTicket: View {
                                     
                                     if(success){
                                         print("EXITOOO!")
-                                        if let listat = listaTicketsR{
-                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
                                         finished = true
-    //                                        self.presentationMode.wrappedValue.dismiss()
-                                        }
                                     } else{
                                         print("SUPER F no jalo")
                                     }
@@ -135,11 +131,7 @@ struct VistaTicket: View {
                                     
                                     if(success){
                                         print("EXITOOO!")
-                                        if let listat = listaTicketsR{
-                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
-                                            finished = true
-                                           //self.presentationMode.wrappedValue.dismiss()
-                                        }
+                                        finished = true
                                     } else{
                                         print("SUPER F no jalo")
                                     }
@@ -181,22 +173,22 @@ struct VistaTicket: View {
                             .padding(.top,10)
                         
                         Button(action: {
-//                            if let repartidor = repartidor {
-//                                sendComment(ticketID: ticket.id, token: repartidor.accessToken, comment: comentarios) {
-//                                    (success, error) in
-//
-//                                    if(success){
-//                                        print("EXITOOO!")
-//                                        if let listat = listaTicketsR{
-//                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
-//                                            finished = true
-//                                            self.presentationMode.wrappedValue.dismiss()
-//                                        }
-//                                    } else{
-//                                        print("SUPER F no jalo")
-//                                    }
-//                                }
-//                            }
+                            if let repartidor = repartidor {
+                                sendComment(ticketID: ticket.id, token: repartidor.accessToken, comment: comentarios) {
+                                    (success, error) in
+                                    
+                                    if(success){
+                                        print("EXITOOO!")
+                                        if let listat = listaTicketsR{
+                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                            finished = true
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        }
+                                    } else{
+                                        print("SUPER F no jalo")
+                                    }
+                                }
+                            }
                         }, label: {
                             Text("Enviar")
                                 .font(.title2)
