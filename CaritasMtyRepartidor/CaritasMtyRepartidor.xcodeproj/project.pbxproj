@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FB82F3DB2AAB93C20073C325 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82F3DA2AAB93C20073C325 /* ModelData.swift */; };
+		FB82F3DB2AAB93C20073C325 /* ModelDataTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82F3DA2AAB93C20073C325 /* ModelDataTicket.swift */; };
+		FB97F6D52AD73BEE003D1030 /* CommentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97F6D42AD73BEE003D1030 /* CommentOption.swift */; };
+		FB97F6D72AD74566003D1030 /* ModelDataComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97F6D62AD74566003D1030 /* ModelDataComments.swift */; };
 		FBA21AEB2AAB8573008874AD /* GlobalVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBA21AEA2AAB8573008874AD /* GlobalVariables.swift */; };
 		FBD24EAF2AAA2741009A7D83 /* TicketFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBD24EAE2AAA2741009A7D83 /* TicketFunctions.swift */; };
 		FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */; };
@@ -25,7 +27,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FB82F3DA2AAB93C20073C325 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
+		FB82F3DA2AAB93C20073C325 /* ModelDataTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDataTicket.swift; sourceTree = "<group>"; };
+		FB97F6D42AD73BEE003D1030 /* CommentOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentOption.swift; sourceTree = "<group>"; };
+		FB97F6D62AD74566003D1030 /* ModelDataComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataComments.swift; sourceTree = "<group>"; };
 		FBA21AEA2AAB8573008874AD /* GlobalVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalVariables.swift; sourceTree = "<group>"; };
 		FBD24EAE2AAA2741009A7D83 /* TicketFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketFunctions.swift; sourceTree = "<group>"; };
 		FBF4C5382AA8D40000B3757D /* CaritasMtyRepartidor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CaritasMtyRepartidor.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -54,6 +58,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FB97F6D12AD73BA1003D1030 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				FBF7E6DD2AA8DA5C001E4D7D /* Ticket.swift */,
+				FBF4C54D2AA8D45D00B3757D /* User.swift */,
+				FB97F6D42AD73BEE003D1030 /* CommentOption.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
 		FBD24EAD2AAA2712009A7D83 /* Reqs */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,8 +99,8 @@
 				FBF4C53B2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift */,
 				FBF7E6E12AA8DC46001E4D7D /* Views */,
 				FBF4C54B2AA8D44900B3757D /* Data.swift */,
-				FBF4C54D2AA8D45D00B3757D /* User.swift */,
-				FBF7E6DC2AA8DA29001E4D7D /* ListaTickets */,
+				FB97F6D12AD73BA1003D1030 /* Types */,
+				FBF7E6DC2AA8DA29001E4D7D /* Listas */,
 				FBF4C53F2AA8D40100B3757D /* Assets.xcassets */,
 				FBF4C5412AA8D40100B3757D /* Preview Content */,
 			);
@@ -101,13 +115,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		FBF7E6DC2AA8DA29001E4D7D /* ListaTickets */ = {
+		FBF7E6DC2AA8DA29001E4D7D /* Listas */ = {
 			isa = PBXGroup;
 			children = (
-				FB82F3DA2AAB93C20073C325 /* ModelData.swift */,
-				FBF7E6DD2AA8DA5C001E4D7D /* Ticket.swift */,
+				FB82F3DA2AAB93C20073C325 /* ModelDataTicket.swift */,
+				FB97F6D62AD74566003D1030 /* ModelDataComments.swift */,
 			);
-			path = ListaTickets;
+			path = Listas;
 			sourceTree = "<group>";
 		};
 		FBF7E6E12AA8DC46001E4D7D /* Views */ = {
@@ -196,9 +210,11 @@
 			files = (
 				FBF4C54A2AA8D41D00B3757D /* Login.swift in Sources */,
 				FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */,
+				FB97F6D52AD73BEE003D1030 /* CommentOption.swift in Sources */,
 				FBF7E6EB2AA8E29A001E4D7D /* TicketA.swift in Sources */,
-				FB82F3DB2AAB93C20073C325 /* ModelData.swift in Sources */,
+				FB82F3DB2AAB93C20073C325 /* ModelDataTicket.swift in Sources */,
 				FBA21AEB2AAB8573008874AD /* GlobalVariables.swift in Sources */,
+				FB97F6D72AD74566003D1030 /* ModelDataComments.swift in Sources */,
 				FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */,
 				FBF7E6DB2AA8D9BA001E4D7D /* VistaTicket.swift in Sources */,
 				FBF4C54C2AA8D44900B3757D /* Data.swift in Sources */,

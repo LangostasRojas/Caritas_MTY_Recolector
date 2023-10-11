@@ -21,7 +21,7 @@ struct VistaTicket: View {
     var ticket : Ticket
     @State var statusRoute: Int
     @State var finished: Bool
-    @State var comentarios: String
+    @State var selectedComment: Int
     
     var body: some View {
         ZStack{
@@ -36,8 +36,8 @@ struct VistaTicket: View {
                         .padding(.leading, 40.0)
                     Spacer()
                 }
-               
-                    
+                
+                
                 Rectangle()
                     .fill(Color("ColorAzulVerdePaleta"))
                     .frame(width: 170,height: 7)
@@ -49,6 +49,7 @@ struct VistaTicket: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 250)
                 
+                // VISTA de un Ruta y Marcar completado/No completado
                 if(!finished){
                     VStack{
                         Group{
@@ -60,7 +61,7 @@ struct VistaTicket: View {
                             Text("Dirección")
                                 .padding(.bottom,5.0)
                                 .fontWeight(.bold)
-                            Text("Calle Eugenio Garza Sada, Lomas Garza, Boca del Rio, Veracruz, C.P. 95264, Mexico")
+                            Text(ticket.direccion)
                             Text("$ \(String(format: "%.2f", ticket.importe))").bold()
                                 .font(.system(size: 36))
                                 .padding(.vertical,5)
@@ -70,6 +71,7 @@ struct VistaTicket: View {
                     }
                     .foregroundColor(.white)
                     
+                    // MARCAR EN RUTA
                     if (statusRoute == 0) {
                         Button(action: {
                             if let repartidor = repartidor {
@@ -79,7 +81,7 @@ struct VistaTicket: View {
                                     if(success){
                                         statusRoute = 1
                                     } else{
-                                        print("SUPER F no jalo")
+                                        print("Error \(error)")
                                     }
                                 }
                             }
@@ -98,16 +100,20 @@ struct VistaTicket: View {
                         .padding(.top, 10)
                     }
                     else {
+                        // RECOLECTADO
                         Button(action: {
                             if let repartidor = repartidor {
                                 completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 1) {
                                     (success, error) in
                                     
                                     if(success){
-                                        print("EXITOOO!")
-                                        finished = true
+                                        if let listat = listaTicketsR{
+                                            listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
+                                            finished = true
+                                            self.presentationMode.wrappedValue.dismiss()
+                                        }
                                     } else{
-                                        print("SUPER F no jalo")
+                                        print("Error \(error)")
                                     }
                                 }
                             }
@@ -124,34 +130,37 @@ struct VistaTicket: View {
                         })
                         .padding(.top, 10)
                         
+                        
+                        // NO RECOLECTADO
                         Button(action: {
                             if let repartidor = repartidor {
                                 completeTicket(ticketID: ticket.id, token: repartidor.accessToken, estatus: 2) {
                                     (success, error) in
                                     
                                     if(success){
-                                        print("EXITOOO!")
                                         finished = true
                                     } else{
-                                        print("SUPER F no jalo")
+                                        print("Error \(error)")
                                     }
                                 }
                             }
                         }, label: {
-                            Text("No recolectado")
-                                .font(.title2)
+                            Text("No Recolectado")
+                                .font(.title)
                                 .bold()
                                 .foregroundColor(.white)
-                            
-                                .frame(width: 220.0, height: 60.0)
-                                .background(Color("ColorAzulVerdeOscuro"))
+                                .tint(.white)
+                                .background(.clear)
+                                .frame(width: 280.0, height: 70.0)
                                 .cornerRadius(30)
+                                .overlay(RoundedRectangle(cornerRadius: 30).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
                                 .shadow(color:.black,radius: 2,y:2)
                         })
                         .padding(.top, 10)
                     }
 
                 }
+                // VISTA de comentarios
                 else {
                     VStack {
                         Text("Comentarios")
@@ -160,25 +169,23 @@ struct VistaTicket: View {
                             .fontWeight(.bold)
                             .padding(.top,20)
                         
-                        TextField("", text: $comentarios, prompt: Text(" Escribe tus comentarios...").foregroundColor(.white).bold(), axis: .vertical)
-                            .foregroundColor(.white)
-                            .padding()
-                        //                        .frame(width: 350, height: 200)
-                            .background(.clear)
-                            .tint(.white).lineLimit(8...)
-                            .foregroundColor(.white)
-                            .cornerRadius(15)
-                            .overlay(RoundedRectangle(cornerRadius: 15).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
-                            .autocorrectionDisabled(true).autocapitalization(.none)
-                            .padding(.top,10)
+                        Picker(selection: $selectedComment, label: Text("Elegir")) {
+                            ForEach(listCommentOptions) {
+                                option in
+                                Text(option.comment)
+                                    .font(.title)
+                                    .tag(option.id)
+                                    .foregroundColor(.white)
+                            }
+                        }.pickerStyle(.wheel)
                         
+                    
                         Button(action: {
                             if let repartidor = repartidor {
-                                sendComment(ticketID: ticket.id, token: repartidor.accessToken, comment: comentarios) {
+                                sendComment(ticketID: ticket.id, token: repartidor.accessToken, comment: selectedComment) {
                                     (success, error) in
                                     
                                     if(success){
-                                        print("EXITOOO!")
                                         if let listat = listaTicketsR{
                                             listaTicketsR?.remove(at: removeItem(arreglo: listat, ticket: ticket))
                                             finished = true
@@ -196,7 +203,7 @@ struct VistaTicket: View {
                                 .foregroundColor(.white)
                             
                                 .frame(width: 220.0, height: 60.0)
-                                .background(Color("ColorAzulVerdeOscuro"))
+                                .background(Color("ColorAzulVerdePaleta"))
                                 .cornerRadius(30)
                                 .shadow(color:.black,radius: 2,y:2)
                         })
@@ -226,7 +233,7 @@ func removeItem(arreglo: Array<Ticket>, ticket: Ticket) -> Int{
 struct VistaTicket_Previews: PreviewProvider {
     static var previews: some View {
         
-        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita, finished: false,comentarios: "")
+        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita, finished: false, selectedComment: 1)
     }
 }
 
