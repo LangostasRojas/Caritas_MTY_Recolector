@@ -12,7 +12,7 @@ func callTickets(userID: Int,token: String) -> [Ticket] {
     
     var lista: [Ticket] = []
     
-    var request = URLRequest(url: URL(string: "http://10.22.217.63:10204/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
+    var request = URLRequest(url: URL(string: "http://10.14.255.66:10206/get-recolector-tickets?userId=\(userID)")!, timeoutInterval: Double.infinity)
     request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
     request.httpMethod = "GET"
@@ -43,7 +43,7 @@ func callTickets(userID: Int,token: String) -> [Ticket] {
 
 
 func completeTicket(ticketID: Int, token: String, estatus: Int, completion: @escaping (Bool, Error?) -> Void) {
-    guard let url = URL(string:"http://10.22.217.63:10204/mark-completed") else {
+    guard let url = URL(string:"http://10.14.255.66:10206/mark-completed") else {
         completion(false, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
@@ -99,7 +99,7 @@ func completeTicket(ticketID: Int, token: String, estatus: Int, completion: @esc
 }
 
 func markOnRouteTicket(ticketID: Int, token: String, estatus: Int, completion: @escaping (Bool, Error?) -> Void) {
-    guard let url = URL(string:"http://10.22.217.63:10204/mark-visit") else{
+    guard let url = URL(string:"http://10.14.255.66:10206/mark-visit") else{
         completion(false, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
@@ -154,7 +154,7 @@ func markOnRouteTicket(ticketID: Int, token: String, estatus: Int, completion: @
 }
 
 func sendComment(ticketID: Int, token: String, comment: Int, completion: @escaping (Bool, Error?) -> Void) {
-    guard let url = URL(string:"http://10.22.217.63:10204/set-comment") else{
+    guard let url = URL(string:"http://10.14.255.66:10206/set-comment") else{
         completion(false, NSError(domain: "Invalid URL", code: 400, userInfo: nil))
         return
     }
