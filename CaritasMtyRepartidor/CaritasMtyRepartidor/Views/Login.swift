@@ -150,6 +150,11 @@ struct Login: View {
                     }
                 }
             }
+            .onAppear() {
+                username = ""
+                password = ""
+                boolalerta = false
+            }
             
         }
     }
