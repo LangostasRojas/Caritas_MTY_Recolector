@@ -10,6 +10,10 @@ import SwiftUI
 struct TicketA: View {
     
     @State var listaTemp: Array<Ticket> = []
+    @State private var showingPop = false
+    @Environment(\.presentationMode) var presentationMode
+        
+    
     var body: some View {
         NavigationStack{
                 ZStack{
@@ -23,6 +27,24 @@ struct TicketA: View {
                                 .fontWeight(.bold)
                                 .padding(.leading, 40.0)
                             Spacer()
+                            
+                            Button(action: {
+                                self.showingPop = true
+                            }){
+                                
+                                Image(systemName: "rectangle.portrait.and.arrow.forward").font(.system(size: 25)).padding(.trailing, 30.0).foregroundColor(.white).padding(.top,10)
+                                
+                            }.alert(isPresented: $showingPop) {
+                                
+                                Alert(title: Text("Cerras sesion"), message: Text("¿Estas seguro de que quieres cerrar sesión?"), primaryButton: .destructive(Text("Si")){
+                                    
+                                    presentationMode.wrappedValue.dismiss()
+                                    
+                                }, secondaryButton: .cancel()
+                                
+                                )
+                                
+                            }
                             
                         }
                         .padding(.top, 20.0)
