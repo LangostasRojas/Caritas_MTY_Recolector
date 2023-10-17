@@ -9,6 +9,11 @@ import SwiftUI
 
 @main
 struct CaritasMtyRepartidorApp: App {
+    init() {
+           let verdePaleta = UIColor(red: 0, green: 156/255, blue: 166/255, alpha: 1)
+
+       }
+    
     var body: some Scene {
         WindowGroup {
             ContentView()

@@ -13,6 +13,9 @@
 //
 
 import SwiftUI
+import CoreLocation
+import CoreLocationUI
+import MapKit
 
 struct VistaTicket: View {
     
@@ -22,6 +25,8 @@ struct VistaTicket: View {
     @State var statusRoute: Int
     @State var finished: Bool
     @State var selectedComment: Int
+    @State var cargarondatos: Bool = false
+    @State var localEnd: Location
     
     var body: some View {
         ZStack{
@@ -42,12 +47,21 @@ struct VistaTicket: View {
                     .fill(Color("ColorAzulVerdePaleta"))
                     .frame(width: 170,height: 7)
                     .cornerRadius(20)
-                    .offset(x:-64,y:-25)
+                    .offset(x:-64,y:-25).onAppear(){
+                        if let repartidor = repartidor{
+                            localEnd = callLocation(ticketID: ticket.id, token: repartidor.accessToken)
+                            print("Se cargaron los datos de localizacion")
+                            cargarondatos = true
+                        }
+                    }
                 
-                Image("Mapa")
-                    .resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 250)
+
+                if(cargarondatos){
+                    MiniMapView(coordinatesend: CLLocationCoordinate2D(latitude: localEnd.lat, longitude: localEnd.lng), region: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: localEnd.lat, longitude: localEnd.lng), latitudinalMeters: 2000, longitudinalMeters: 2000)).frame(width: 350,height: 200).cornerRadius(10).overlay(RoundedRectangle(cornerRadius: 10).stroke(Color("ColorAzulVerdePaleta"), lineWidth: 3))
+                }else{
+                    ProgressView()
+                }
+                
                 
                 // VISTA de un Ruta y Marcar completado/No completado
                 if(!finished){
@@ -233,7 +247,7 @@ func removeItem(arreglo: Array<Ticket>, ticket: Ticket) -> Int{
 struct VistaTicket_Previews: PreviewProvider {
     static var previews: some View {
         
-        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita, finished: false, selectedComment: 1)
+        VistaTicket(ticket: listaTickets[0], statusRoute: listaTickets[0].estatusVisita, finished: false, selectedComment: 1, localEnd: Location(lat: 0.0, lng: 0.0))
     }
 }
 

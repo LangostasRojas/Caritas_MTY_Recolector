@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FB5EE76A2ADEE260008142C1 /* GetLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5EE7692ADEE260008142C1 /* GetLocation.swift */; };
+		FB5EE76C2ADEE27B008142C1 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5EE76B2ADEE27B008142C1 /* Location.swift */; };
+		FB5EE76E2ADEE285008142C1 /* MiniMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB5EE76D2ADEE285008142C1 /* MiniMapView.swift */; };
 		FB82F3DB2AAB93C20073C325 /* ModelDataTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB82F3DA2AAB93C20073C325 /* ModelDataTicket.swift */; };
 		FB97F6D52AD73BEE003D1030 /* CommentOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97F6D42AD73BEE003D1030 /* CommentOption.swift */; };
 		FB97F6D72AD74566003D1030 /* ModelDataComments.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB97F6D62AD74566003D1030 /* ModelDataComments.swift */; };
@@ -27,6 +30,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FB5EE7692ADEE260008142C1 /* GetLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetLocation.swift; sourceTree = "<group>"; };
+		FB5EE76B2ADEE27B008142C1 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		FB5EE76D2ADEE285008142C1 /* MiniMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MiniMapView.swift; sourceTree = "<group>"; };
 		FB82F3DA2AAB93C20073C325 /* ModelDataTicket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDataTicket.swift; sourceTree = "<group>"; };
 		FB97F6D42AD73BEE003D1030 /* CommentOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentOption.swift; sourceTree = "<group>"; };
 		FB97F6D62AD74566003D1030 /* ModelDataComments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataComments.swift; sourceTree = "<group>"; };
@@ -61,6 +67,7 @@
 		FB97F6D12AD73BA1003D1030 /* Types */ = {
 			isa = PBXGroup;
 			children = (
+				FB5EE76B2ADEE27B008142C1 /* Location.swift */,
 				FBF7E6DD2AA8DA5C001E4D7D /* Ticket.swift */,
 				FBF4C54D2AA8D45D00B3757D /* User.swift */,
 				FB97F6D42AD73BEE003D1030 /* CommentOption.swift */,
@@ -71,6 +78,7 @@
 		FBD24EAD2AAA2712009A7D83 /* Reqs */ = {
 			isa = PBXGroup;
 			children = (
+				FB5EE7692ADEE260008142C1 /* GetLocation.swift */,
 				FBD24EAE2AAA2741009A7D83 /* TicketFunctions.swift */,
 			);
 			path = Reqs;
@@ -130,6 +138,7 @@
 				FBF7E6E62AA8DDAE001E4D7D /* ContentView.swift */,
 				FBF7E6DA2AA8D9BA001E4D7D /* VistaTicket.swift */,
 				FBF7E6DF2AA8DBF0001E4D7D /* TicketRow.swift */,
+				FB5EE76D2ADEE285008142C1 /* MiniMapView.swift */,
 				FBF4C5492AA8D41D00B3757D /* Login.swift */,
 				FBA21AEA2AAB8573008874AD /* GlobalVariables.swift */,
 				FBF7E6EA2AA8E29A001E4D7D /* TicketA.swift */,
@@ -208,11 +217,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB5EE76E2ADEE285008142C1 /* MiniMapView.swift in Sources */,
 				FBF4C54A2AA8D41D00B3757D /* Login.swift in Sources */,
 				FBF4C53C2AA8D40000B3757D /* CaritasMtyRepartidorApp.swift in Sources */,
 				FB97F6D52AD73BEE003D1030 /* CommentOption.swift in Sources */,
 				FBF7E6EB2AA8E29A001E4D7D /* TicketA.swift in Sources */,
 				FB82F3DB2AAB93C20073C325 /* ModelDataTicket.swift in Sources */,
+				FB5EE76C2ADEE27B008142C1 /* Location.swift in Sources */,
+				FB5EE76A2ADEE260008142C1 /* GetLocation.swift in Sources */,
 				FBA21AEB2AAB8573008874AD /* GlobalVariables.swift in Sources */,
 				FB97F6D72AD74566003D1030 /* ModelDataComments.swift in Sources */,
 				FBF4C54E2AA8D45D00B3757D /* User.swift in Sources */,
@@ -354,6 +366,7 @@
 				DEVELOPMENT_TEAM = 9MQSX62K58;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Puedes compartir la ubicacion porfavor.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -383,6 +396,7 @@
 				DEVELOPMENT_TEAM = 9MQSX62K58;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Puedes compartir la ubicacion porfavor.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
