@@ -55,9 +55,9 @@ struct TicketA: View {
                                 
                                 if let unwrappedListaTicketsR = listaTicketsR {
                                     ForEach(listaTemp) { ticketItem in
-                                        NavigationLink(destination: VistaTicket(ticket: ticketItem, statusRoute: ticketItem.estatusVisita,finished:false,selectedComment: 0)) {
+                                        NavigationLink(destination: VistaTicket(ticket: ticketItem, statusRoute: ticketItem.estatusVisita,finished:false,selectedComment: 0, localEnd: Location(lat: 0.0, lng: 0.0))) {
                                             
-                                            TicketRow(ticket: ticketItem)
+                                            TicketRow(ticket: ticketItem, localEnd: Location(lat: 0.0, lng: 0.0))
                                         }
                                         .buttonStyle(.plain)
                                         .padding(0)

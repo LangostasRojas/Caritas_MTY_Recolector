@@ -6,18 +6,30 @@
 //
 
 import SwiftUI
+import CoreLocation
+import CoreLocationUI
+import MapKit
 
 struct TicketRow: View {
     var ticket : Ticket
+    @State var cargarondatos: Bool = false
+    @State var localEnd: Location
     var body: some View {
         ZStack{
-            Color("BgColor").ignoresSafeArea()
+            Color("BgColor").ignoresSafeArea().onAppear(){
+                if let repartidor = repartidor{
+                    localEnd = callLocation(ticketID: ticket.id, token: repartidor.accessToken)
+                    print("Se cargaron los datos de localizacion")
+                    cargarondatos = true
+                }
+            }
             HStack{
                 
-                Image("Mapa").resizable(resizingMode: .stretch)
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100)
-                    .padding(.trailing)
+                if(cargarondatos){
+                    MiniMapView(coordinatesend: CLLocationCoordinate2D(latitude: localEnd.lat, longitude: localEnd.lng), region: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: localEnd.lat, longitude: localEnd.lng), latitudinalMeters: 20000, longitudinalMeters: 20000)).frame(width: 100, height: 100).cornerRadius(10)
+                }else{
+                    ProgressView()
+                }
                 
                 VStack(alignment: .leading){
                     Text("\(ticket.nombre)")
@@ -51,6 +63,6 @@ struct TicketRow: View {
 
 struct JugadorRow_Previews: PreviewProvider {
     static var previews: some View {
-        TicketRow(ticket: listaTickets[0])
+        TicketRow(ticket: listaTickets[0], localEnd: Location(lat: 0.0, lng: 0.0))
     }
 }
