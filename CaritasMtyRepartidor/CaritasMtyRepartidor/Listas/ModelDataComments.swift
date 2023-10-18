@@ -12,7 +12,7 @@ var listCommentOptions: Array<CommentOptions> = getCommentOptions()
 func getCommentOptions() -> [CommentOptions] {
     var list: [CommentOptions] = []
     
-    var request = URLRequest(url: URL(string: "http://10.14.255.66:10206/get-list-comments")!, timeoutInterval: Double.infinity)
+    var request = URLRequest(url: URL(string: "https://equipo02.tc2007b.tec.mx:10206/get-list-comments")!, timeoutInterval: Double.infinity)
 
     request.httpMethod = "GET"
 

@@ -12,7 +12,7 @@ func callLocation(ticketID: Int, token: String) -> Location {
     
     var coordenadas: Location = Location(lat: 0.0, lng: 0.0)
     
-    var request = URLRequest(url: URL(string: "http://10.14.255.66:10206/get-geolocation?ticketId=\(ticketID)")!, timeoutInterval: Double.infinity)
+    var request = URLRequest(url: URL(string: "https://equipo02.tc2007b.tec.mx:10206/get-geolocation?ticketId=\(ticketID)")!, timeoutInterval: Double.infinity)
     request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
 
     request.httpMethod = "GET"
